@@ -10,4 +10,5 @@ public class AutolocApiApplication {
         SpringApplication.run(AutolocApiApplication.class, args);
     }
 
+
 }
