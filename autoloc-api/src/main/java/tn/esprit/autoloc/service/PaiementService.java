@@ -1,6 +1,7 @@
 package tn.esprit.autoloc.service;
 
 import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import tn.esprit.autoloc.domain.Paiement;
 import tn.esprit.autoloc.repository.PaiementRepository;
@@ -8,10 +9,11 @@ import tn.esprit.autoloc.repository.PaiementRepository;
 import java.util.List;
 
 @Service
-@AllArgsConstructor
+@RequiredArgsConstructor
+
 public class PaiementService implements IPaiementService {
 
-    PaiementRepository paiementRepo;
+    final PaiementRepository paiementRepo;
 
     @Override
     public List<Paiement> retrieveAllPaiements() {

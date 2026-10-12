@@ -1,6 +1,7 @@
 package tn.esprit.autoloc.service;
 
 import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import tn.esprit.autoloc.domain.Employe;
 import tn.esprit.autoloc.repository.EmployeRepository;
@@ -8,10 +9,11 @@ import tn.esprit.autoloc.repository.EmployeRepository;
 import java.util.List;
 
 @Service
-@AllArgsConstructor
+@RequiredArgsConstructor
+
 public class EmployeService implements IEmployeService {
 
-    EmployeRepository employeRepo;
+    final EmployeRepository employeRepo;
 
     @Override
     public List<Employe> retrieveAllEmployes() {
