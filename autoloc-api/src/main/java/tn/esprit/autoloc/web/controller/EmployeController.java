@@ -43,4 +43,15 @@ public class EmployeController {
     public void deleteEmploye(@PathVariable("id") Long idEmploye) {
         ie.removeEmploye(idEmploye);
     }
+
+    @PutMapping("/affecterEmploye/{idEmploye}/{idAgence}")
+    public Employe affecterEmploye(@PathVariable("idEmploye") Long idEmploye,
+                                   @PathVariable("idAgence") Long idAgence) {
+        return ie.affecterEmploye(idEmploye, idAgence);
+    }
+
+    @PutMapping("/desaffecterEmploye/{idEmploye}")
+    public Employe desaffecterEmploye(@PathVariable("idEmploye") Long idEmploye) {
+        return ie.desaffecterEmploye(idEmploye);
+    }
 }
