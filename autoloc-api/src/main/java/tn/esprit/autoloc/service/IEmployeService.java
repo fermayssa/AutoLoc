@@ -11,4 +11,6 @@ public interface IEmployeService {
     Employe retrieveEmploye(Long idEmploye);
     void removeEmploye(Long idEmploye);
     List<Employe> addEmployes(List<Employe> employes);
+    Employe affecterEmploye(Long idEmploye, Long idAgence);
+    Employe desaffecterEmploye(Long idEmploye);
 }
