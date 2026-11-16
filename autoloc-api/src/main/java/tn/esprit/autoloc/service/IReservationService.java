@@ -11,4 +11,6 @@ public interface IReservationService {
     Reservation retrieveReservation(Long idReservation);
     void removeReservation(Long idReservation);
     List<Reservation> addReservations(List<Reservation> reservations);
+    List<Reservation> getReservationsApres(LocalDate date);
+
 }

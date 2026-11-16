@@ -4,6 +4,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 import tn.esprit.autoloc.domain.Reservation;
 import tn.esprit.autoloc.service.IReservationService;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import java.util.List;
 
@@ -42,5 +43,12 @@ public class ReservationController {
     @DeleteMapping("/deleteReservation/{id}")
     public void deleteReservation(@PathVariable("id") Long idReservation) {
         ir.removeReservation(idReservation);
+    }
+
+
+    @GetMapping("/apres-date")
+    public List<Reservation> getApresDate(
+            @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate date) {
+        return reservationService.getReservationsApres(date);
     }
 }

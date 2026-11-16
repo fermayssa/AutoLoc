@@ -44,4 +44,8 @@ public class ReservationService implements IReservationService {
     public List<Reservation> addReservations(List<Reservation> reservations) {
         return (List<Reservation>) reservationRepo.saveAll(reservations);
     }
+    @Override
+    public List<Reservation> getReservationsApres(LocalDate date) {
+        return reservationRepository.findByDateDebutAfter(date);
+    }
 }
