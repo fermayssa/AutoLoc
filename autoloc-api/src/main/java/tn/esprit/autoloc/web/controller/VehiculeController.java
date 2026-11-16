@@ -4,7 +4,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 import tn.esprit.autoloc.domain.Vehicule;
 import tn.esprit.autoloc.service.IVehiculeService;
-
+import java.math.BigDecimal;
 import java.util.List;
 
 @RestController
@@ -59,5 +59,44 @@ public class VehiculeController {
     public Vehicule desaffecterEquipement(@PathVariable("idVehicule") Long idVehicule,
                                           @PathVariable("idEquipement") Long idEquipement) {
         return iv.desaffecterEquipement(idVehicule, idEquipement);
+    }
+
+
+
+    // Q1
+    @GetMapping("/marque/{marque}")
+    public List<Vehicule> getByMarque(@PathVariable String marque) {
+        return vehiculeService.getVehiculesByMarque(marque);
+    }
+
+    // Q2
+    @GetMapping("/categorie/{categorie}")
+    public List<Vehicule> getByCategorie(@PathVariable CategorieVehicule categorie) {
+        return vehiculeService.getVehiculesByCategorie(categorie);
+    }
+
+    // Q3
+    @GetMapping("/disponibles")
+    public List<Vehicule> getDisponibles() {
+        return vehiculeService.getVehiculesDisponibles();
+    }
+
+    // Q5
+    @GetMapping("/search")
+    public List<Vehicule> searchByMarque(@RequestParam String marque) {
+        return vehiculeService.searchVehiculesByMarque(marque);
+    }
+
+    // Q8
+    @GetMapping("/tarif-superieur")
+    public List<Vehicule> getTarifSuperieur(@RequestParam(defaultValue = "100") BigDecimal tarif) {
+        return vehiculeService.getVehiculesTarifSuperieurA(tarif);
+    }
+
+    // Q11
+    @GetMapping("/marque-statut")
+    public List<Vehicule> getByMarqueAndStatut(@RequestParam String marque,
+                                               @RequestParam StatutVehicule statut) {
+        return vehiculeService.getVehiculesByMarqueEtStatut(marque, statut);
     }
 }

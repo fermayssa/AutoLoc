@@ -11,6 +11,7 @@ import tn.esprit.autoloc.domain.Vehicule;
 import tn.esprit.autoloc.repository.AgenceRepository;
 import tn.esprit.autoloc.repository.EquipementRepository;
 import tn.esprit.autoloc.repository.VehiculeRepository;
+import java.math.BigDecimal;
 
 import java.util.List;
 
@@ -96,4 +97,36 @@ public class VehiculeService implements IVehiculeService {
         }
         return vehiculeRepo.save(v);
     }
+
+
+    @Override
+    public List<Vehicule> getVehiculesByMarque(String marque) {
+        return vehiculeRepository.findByMarque(marque);
+    }
+
+    @Override
+    public List<Vehicule> getVehiculesByCategorie(CategorieVehicule categorie) {
+        return vehiculeRepository.findByCategorie(categorie);
+    }
+
+    @Override
+    public List<Vehicule> getVehiculesDisponibles() {
+        return vehiculeRepository.findByStatut(StatutVehicule.DISPONIBLE);
+    }
+
+    @Override
+    public List<Vehicule> searchVehiculesByMarque(String keyword) {
+        return vehiculeRepository.findByMarqueContainingIgnoreCase(keyword);
+    }
+
+    @Override
+    public List<Vehicule> getVehiculesTarifSuperieurA(BigDecimal tarif) {
+        return vehiculeRepository.findByTarifJournalierGreaterThan(tarif);
+    }
+
+    @Override
+    public List<Vehicule> getVehiculesByMarqueEtStatut(String marque, StatutVehicule statut) {
+        return vehiculeRepository.findByMarqueAndStatut(marque, statut);
+    }
+
 }
