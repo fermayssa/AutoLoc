@@ -43,4 +43,9 @@ public class AgenceController {
     public void deleteAgence(@PathVariable("id") Long idAgence) {
         ia.removeAgence(idAgence);
     }
+
+    @GetMapping("/ville/{ville}")
+    public List<Agence> getByVille(@PathVariable String ville) {
+        return agenceService.getAgencesByVille(ville);
+    }
 }
